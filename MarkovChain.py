@@ -17,19 +17,19 @@ class MarkovChain(object):
     a specified numbner of these sentences.
     
     Attributes:
-        in_file (str): Name of the txt file with the corpus.
+        file_name (str): Name of the txt file with the corpus.
         dictionary (list of str): List of all the words in the corpus.
         start_list (list of int): Indices of all the words that start sentences.
         end_list (list of int): Indices of all the words that end sentences.
         pair_dict (dict of lists of int): Dictionary with 2-tuple key that stores possible third words.
     """
     
-    def __init__(self, in_file):
+    def __init__(self, file_name):
         """
         Args:
-            in_file (str): Name of the txt file with the corpus.
+            file_name (str): Name of the txt file with the corpus.
         """
-        self.in_file = in_file
+        self.file_name = file_name
         self.dictionary = self.read_words()
         (self.start_list, self.end_list) = self.find_start_end()
         self.pair_dict = self.make_pair_dict()
@@ -38,7 +38,7 @@ class MarkovChain(object):
         """
         Separates words in the text file with space.
         """
-        file = open(self.in_file)
+        file = open(self.file_name)
         dictionary = file.read().split()
         
         return dictionary
